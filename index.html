@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Сайт отзывов о фильмах</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Наши фильмы</h1>
+        </header>
+
+        <main>
+            <div class="movies-grid" id="movies-grid"></div>
+        </main>
+
+        <script>
+            const movies = [
+                { id: 1, title: "Урок", poster: "images/1.webp" },
+                { id: 2, title: "Отряд светлячков", poster: "images/2.webp" },
+                {
+                    id: 3,
+                    title: "В потерянных землях",
+                    poster: "images/3.webp",
+                },
+                {
+                    id: 4,
+                    title: "Горная невеста",
+                    poster: "images/4.webp",
+                },
+                {
+                    id: 5,
+                    title: "Конклав",
+                    poster: "images/5.webp",
+                },
+            ];
+
+            const grid = document.getElementById("movies-grid");
+
+            movies.forEach((movie) => {
+                const card = document.createElement("div");
+                card.className = "movie-card";
+                card.innerHTML = `
+        <img src="${movie.poster}" alt="Постер ${movie.title}">
+        <h2>${movie.title}</h2>
+      `;
+                card.addEventListener("click", () => {
+                    window.location.href = `film.html?film_id=${movie.id}`;
+                });
+                grid.appendChild(card);
+            });
+        </script>
+    </body>
+</html>
